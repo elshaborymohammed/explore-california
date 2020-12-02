@@ -28,6 +28,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/packages/**").permitAll()
                 .antMatchers("/tours/**").permitAll()
                 .antMatchers("/ratings/**").permitAll()
+                .antMatchers("/explorer/**").permitAll()
                 .antMatchers("/users/signin").permitAll()
                 // Disallow everything else..
                 .anyRequest().authenticated();
