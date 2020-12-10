@@ -2,7 +2,7 @@ FROM openjdk:13
 WORKDIR /
 
 #EXPOSE 8181
-EXPOSE ${PORT}
+# EXPOSE ${PORT}
 
 #ADD target/explorecali-3.0.0-SNAPSHOT.jar //
 ADD target/${JAR_FILE} //

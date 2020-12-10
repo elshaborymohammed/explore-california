@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  api:
+    container_name: "api"
+    image: openjdk:13
+    restart: on-failure
+    working_dir: /home
+    links:
+      - db
+    depends_on:
+      - db
+    volumes:
+      - /Users/elshabory/Workspace/explore-california/maven/target:/home
+      - /Users/elshabory/Workspace/explore-california/src/main/resources/db/migration:/var/migration
+    ports:
+      - 8080:8080
+    environment:
+      - server=db
+      - port=3306
+      - dbname=explorecali
+      - dbuser=root
+      - dbpassword=password
+    command:
+      ls -al
+    entrypoint: [ "java", "-jar", "-Dspring.profiles.active=docker", "california-0.0.1-SNAPSHOT.jar" ]
+
+  db:
+    container_name: "db"
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=explorecali
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=pass
+    ports:
+      - 6604:3306
