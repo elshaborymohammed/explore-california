@@ -32,13 +32,9 @@ docker run -it --link ec-mysql:mysql --rm mysql sh -c 'exec mysql -h"$MYSQL_PORT
 ``
 
 ##### Interact with Database
-``
-docker exec -it ec-mysql sh -c 'exec mysql -uuser -ppass'
-docker exec -it ec-mysql sh -c 'exec mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD"'
+``docker exec -it ec-mysql sh -c 'exec mysql -uuser -ppass'``
 
-docker exec -it db sh -c 'exec mysql -uuser -ppass'
-docker exec -it db sh -c 'exec mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD"'
-``
+``docker exec -it ec-mysql sh -c 'exec mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD"'``
 
 ##### Stop ec-mysql container
 ``
