@@ -14,7 +14,7 @@ mvn package -DskipTests
 #### Docker Commands
 ##### Start MySql Container (downloads image if not found)
 ``
-docker run --detach --name ec-mysql -p 6604:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=explorecali -e MYSQL_USER=cali_user -e MYSQL_PASSWORD=cali_pass -d mysql
+docker run --detach --name ec-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=explorecali -e MYSQL_USER=cali_user -e MYSQL_PASSWORD=cali_pass -d mysql
 ``
 
 ##### view all images
