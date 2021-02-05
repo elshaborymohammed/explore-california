@@ -1,4 +1,4 @@
-package com.smart.california.web;
+package com.smart.california.aas;
 
 import com.smart.california.domain.TourRating;
 import com.smart.california.service.TourRatingService;
@@ -48,7 +48,7 @@ public class TourRatingController {
     @PostMapping
     @PreAuthorize("hasRole('ROLE_CSR')")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createTourRating(@PathVariable(value = "tourId") int tourId, @RequestBody @Validated com.smart.california.web.RatingDto ratingDto) {
+    public void createTourRating(@PathVariable(value = "tourId") int tourId, @RequestBody @Validated com.smart.california.aas.RatingDto ratingDto) {
         LOGGER.info("POST /tours/{}/ratings", tourId);
         tourRatingService.createNew(tourId, ratingDto.getCustomerId(), ratingDto.getScore(), ratingDto.getComment());
     }
@@ -78,13 +78,13 @@ public class TourRatingController {
      * @return
      */
     @GetMapping
-    public Page<com.smart.california.web.RatingDto> getAllRatingsForTour(@PathVariable(value = "tourId") int tourId, Pageable pageable,
-                                                                   PagedResourcesAssembler pagedAssembler) {
+    public Page<com.smart.california.aas.RatingDto> getAllRatingsForTour(@PathVariable(value = "tourId") int tourId, Pageable pageable,
+                                                                         PagedResourcesAssembler pagedAssembler) {
         LOGGER.info("GET /tours/{}/ratings", tourId);
         Page<TourRating> tourRatingPage = tourRatingService.lookupRatings(tourId, pageable);
-        List<com.smart.california.web.RatingDto> ratingDtoList = tourRatingPage.getContent()
+        List<com.smart.california.aas.RatingDto> ratingDtoList = tourRatingPage.getContent()
                 .stream().map(this::toDto).collect(Collectors.toList());
-        return new PageImpl<com.smart.california.web.RatingDto>(ratingDtoList, pageable, tourRatingPage.getTotalPages());
+        return new PageImpl<com.smart.california.aas.RatingDto>(ratingDtoList, pageable, tourRatingPage.getTotalPages());
     }
 
     /**
@@ -108,7 +108,7 @@ public class TourRatingController {
      */
     @PutMapping
     @PreAuthorize("hasRole('ROLE_CSR')")
-    public com.smart.california.web.RatingDto updateWithPut(@PathVariable(value = "tourId") int tourId, @RequestBody @Validated com.smart.california.web.RatingDto ratingDto) {
+    public com.smart.california.aas.RatingDto updateWithPut(@PathVariable(value = "tourId") int tourId, @RequestBody @Validated com.smart.california.aas.RatingDto ratingDto) {
         LOGGER.info("PUT /tours/{}/ratings", tourId);
         return toDto(tourRatingService.update(tourId, ratingDto.getCustomerId(),
                  ratingDto.getScore(), ratingDto.getComment()));
@@ -122,7 +122,7 @@ public class TourRatingController {
      */
     @PatchMapping
     @PreAuthorize("hasRole('ROLE_CSR')")
-    public com.smart.california.web.RatingDto updateWithPatch(@PathVariable(value = "tourId") int tourId, @RequestBody @Validated com.smart.california.web.RatingDto ratingDto) {
+    public com.smart.california.aas.RatingDto updateWithPatch(@PathVariable(value = "tourId") int tourId, @RequestBody @Validated com.smart.california.aas.RatingDto ratingDto) {
         LOGGER.info("PATCH /tours/{}/ratings", tourId);
         return toDto(tourRatingService.updateSome(tourId, ratingDto.getCustomerId(),
                  ratingDto.getScore(), ratingDto.getComment()));
@@ -147,8 +147,8 @@ public class TourRatingController {
      * @param tourRating
      * @return RatingDto
      */
-    private com.smart.california.web.RatingDto toDto(TourRating tourRating) {
-        return new com.smart.california.web.RatingDto(tourRating.getScore(), tourRating.getComment(), tourRating.getCustomerId());
+    private com.smart.california.aas.RatingDto toDto(TourRating tourRating) {
+        return new com.smart.california.aas.RatingDto(tourRating.getScore(), tourRating.getComment(), tourRating.getCustomerId());
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.smart.california.web;
+package com.smart.california.aas;
 
 import javax.validation.constraints.NotNull;
 
