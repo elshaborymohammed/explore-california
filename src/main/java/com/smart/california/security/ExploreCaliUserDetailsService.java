@@ -1,7 +1,7 @@
 package com.smart.california.security;
 
 import com.smart.california.domain.User;
-import com.smart.california.repo.UserRepository;
+import com.smart.california.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

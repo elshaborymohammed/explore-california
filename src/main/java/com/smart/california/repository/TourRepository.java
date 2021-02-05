@@ -1,4 +1,4 @@
-package com.smart.california.repo;
+package com.smart.california.repository;
 
 import com.smart.california.domain.Tour;
 import org.springframework.data.domain.Page;

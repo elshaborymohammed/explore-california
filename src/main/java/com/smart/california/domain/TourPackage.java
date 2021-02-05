@@ -9,10 +9,10 @@ import java.util.Objects;
 
 /**
  * A Classification of Tours.
- *
+ * <p>
  * Created by Mary Ellen Bowman
  */
-@Table(name="tour_package")
+@Table(name = "tour_package")
 @Entity
 public class TourPackage implements Serializable {
     @Id

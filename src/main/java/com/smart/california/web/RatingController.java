@@ -28,15 +28,15 @@ public class RatingController {
     }
 
     @GetMapping
-    public List<com.smart.california.web.RatingDto> getAll() {
+    public List<RatingDto> getAll() {
         LOGGER.info("GET /ratings");
         return tourRatingService.lookupAll().stream()
-                .map(t -> new com.smart.california.web.RatingDto(t.getScore(), t.getComment(), t.getCustomerId()))
+                .map(t -> new RatingDto(t.getScore(), t.getComment(), t.getCustomerId()))
                 .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
-    public com.smart.california.web.RatingDto getRating(@PathVariable("id") Integer id) {
+    public RatingDto getRating(@PathVariable("id") Integer id) {
         LOGGER.info("GET /ratings/{id}", id);
         return tourRatingService.lookupRatingById(id)
                 .map(t -> new com.smart.california.web.RatingDto(t.getScore(), t.getComment(), t.getCustomerId()))

@@ -1,4 +1,4 @@
-package com.smart.california.aas;
+package com.smart.california.web;
 
 import com.smart.california.domain.User;
 import com.smart.california.service.UserService;
@@ -23,16 +23,16 @@ public class UserController {
 
     @PostMapping("/signin")
     public String login(@RequestBody @Valid LoginDto loginDto) {
-       return userService.signin(loginDto.getUsername(), loginDto.getPassword()).orElseThrow(()->
-               new HttpServerErrorException(HttpStatus.FORBIDDEN, "Login Failed"));
+        return userService.signin(loginDto.getUsername(), loginDto.getPassword())
+                .orElseThrow(() -> new HttpServerErrorException(HttpStatus.FORBIDDEN, "Login Failed"));
     }
 
     @PostMapping("/signup")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
-    public User signup(@RequestBody @Valid LoginDto loginDto){
+    public User signup(@RequestBody @Valid LoginDto loginDto) {
         return userService.signup(loginDto.getUsername(), loginDto.getPassword(), loginDto.getFirstName(),
-                loginDto.getLastName()).orElseThrow(() -> new HttpServerErrorException(HttpStatus.BAD_REQUEST,"User already exists"));
+                loginDto.getLastName()).orElseThrow(() -> new HttpServerErrorException(HttpStatus.BAD_REQUEST, "User already exists"));
     }
 
     @GetMapping

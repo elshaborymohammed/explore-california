@@ -1,15 +1,17 @@
 package com.smart.california.domain;
 
+import com.smart.california.domain.Tour;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 /**
  * Rating of a Tour by a Customer
- *
+ * <p>
  * Created by Mary Ellen Bowman
  */
 @Entity
-@Table(name="tour_rating")
+@Table(name = "tour_rating")
 public class TourRating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,9 +19,9 @@ public class TourRating {
 
     @ManyToOne
     @JoinColumn(name = "tour_id")
-    private com.smart.california.domain.Tour tour;
+    private Tour tour;
 
-    @Column(name="customer_id")
+    @Column(name = "customer_id")
     private Integer customerId;
 
     @Column(nullable = false)
@@ -34,12 +36,12 @@ public class TourRating {
     /**
      * Create a fully initialized TourRating.
      *
-     * @param tour          the tour.
-     * @param customerId    the customer identifier.
+     * @param tour       the tour.
+     * @param customerId the customer identifier.
      * @param score      Integer score (1-5)
      * @param comment    Optional comment from the customer
      */
-    public TourRating(com.smart.california.domain.Tour tour, Integer customerId, Integer score, String comment) {
+    public TourRating(Tour tour, Integer customerId, Integer score, String comment) {
         this.tour = tour;
         this.customerId = customerId;
         this.score = score;
@@ -49,11 +51,11 @@ public class TourRating {
     /**
      * Create a fully initialized TourRating.
      *
-     * @param tour          the tour.
-     * @param customerId    the customer identifier.
+     * @param tour       the tour.
+     * @param customerId the customer identifier.
      * @param score      Integer score (1-5)
      */
-    public TourRating(com.smart.california.domain.Tour tour, Integer customerId, Integer score) {
+    public TourRating(Tour tour, Integer customerId, Integer score) {
         this.tour = tour;
         this.customerId = customerId;
         this.score = score;
@@ -68,12 +70,18 @@ public class TourRating {
      */
     private String toComment(Integer score) {
         switch (score) {
-            case 1:return "Terrible";
-            case 2:return "Poor";
-            case 3:return "Fair";
-            case 4:return "Good";
-            case 5:return "Great";
-            default: return score.toString();
+            case 1:
+                return "Terrible";
+            case 2:
+                return "Poor";
+            case 3:
+                return "Fair";
+            case 4:
+                return "Good";
+            case 5:
+                return "Great";
+            default:
+                return score.toString();
         }
     }
 
@@ -89,11 +97,11 @@ public class TourRating {
         return comment;
     }
 
-    public com.smart.california.domain.Tour getTour() {
+    public Tour getTour() {
         return tour;
     }
 
-    public void setTour(com.smart.california.domain.Tour tour) {
+    public void setTour(Tour tour) {
         this.tour = tour;
     }
 

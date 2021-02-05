@@ -2,8 +2,8 @@ package com.smart.california.service;
 
 import com.smart.california.domain.Role;
 import com.smart.california.domain.User;
-import com.smart.california.repo.RoleRepository;
-import com.smart.california.repo.UserRepository;
+import com.smart.california.repository.RoleRepository;
+import com.smart.california.repository.UserRepository;
 import com.smart.california.security.JwtProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

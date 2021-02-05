@@ -6,11 +6,11 @@ import java.util.Objects;
 
 /**
  * The Tour contains all attributes of an Explore California Tour.
- *
+ * <p>
  * Created by Mary Ellen Bowman
  */
 @Entity
-public class Tour implements Serializable{
+public class Tour implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -38,18 +38,18 @@ public class Tour implements Serializable{
 
 
     @ManyToOne
-    @JoinColumn(name="tour_package_code")
-    private com.smart.california.domain.TourPackage tourPackage;
+    @JoinColumn(name = "tour_package_code")
+    private TourPackage tourPackage;
 
     @Column
     @Enumerated(EnumType.STRING)
-    private com.smart.california.domain.Difficulty difficulty;
+    private Difficulty difficulty;
 
     @Column
     private Region region;
 
     public Tour(String title, String description, String blurb, Integer price, String duration, String bullets,
-                String keywords, com.smart.california.domain.TourPackage tourPackage, com.smart.california.domain.Difficulty difficulty, Region region) {
+                String keywords, TourPackage tourPackage, Difficulty difficulty, Region region) {
         this.title = title;
         this.description = description;
         this.blurb = blurb;
@@ -97,11 +97,11 @@ public class Tour implements Serializable{
         return keywords;
     }
 
-    public com.smart.california.domain.TourPackage getTourPackage() {
+    public TourPackage getTourPackage() {
         return tourPackage;
     }
 
-    public com.smart.california.domain.Difficulty getDifficulty() {
+    public Difficulty getDifficulty() {
         return difficulty;
     }
 

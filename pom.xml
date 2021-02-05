@@ -18,10 +18,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>13</java.version>
-        <main.src>../src/main/java</main.src>
-        <main.resources>../src/main/resources</main.resources>
-        <test.src>../src/test/java</test.src>
+        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
@@ -83,10 +80,10 @@
         <!--endregion-->
 
         <!--region [API documentation]-->
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-rest-hal-explorer</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.data</groupId>-->
+<!--            <artifactId>spring-data-rest-hal-explorer</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -95,7 +92,7 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
+            <version>3.0.0</version>
         </dependency>
         <!--endregion-->
 
@@ -115,13 +112,6 @@
     </dependencies>
 
     <build>
-        <sourceDirectory>${main.src}</sourceDirectory>
-        <resources>
-            <resource>
-                <directory>${main.resources}</directory>
-            </resource>
-        </resources>
-        <testSourceDirectory>${test.src}</testSourceDirectory>
 
         <plugins>
             <plugin>

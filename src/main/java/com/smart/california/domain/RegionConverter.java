@@ -5,18 +5,18 @@ import javax.persistence.Converter;
 
 /**
  * Hibernate Converter for the Region Enum to DB Column.
- *
+ * <p>
  * Created by Mary Ellen Bowman
  */
 @Converter(autoApply = true)
-public class RegionConverter implements AttributeConverter<com.smart.california.domain.Region, String>{
+public class RegionConverter implements AttributeConverter<Region, String> {
     @Override
-    public String convertToDatabaseColumn(com.smart.california.domain.Region region) {
+    public String convertToDatabaseColumn(Region region) {
         return region.getLabel();
     }
 
     @Override
-    public com.smart.california.domain.Region convertToEntityAttribute(String s) {
-        return com.smart.california.domain.Region.findByLabel(s);
+    public Region convertToEntityAttribute(String s) {
+        return Region.findByLabel(s);
     }
 }

@@ -1,4 +1,4 @@
-package com.smart.california.aas;
+package com.smart.california.web;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;

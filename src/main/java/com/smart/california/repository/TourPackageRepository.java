@@ -1,4 +1,4 @@
-package com.smart.california.repo;
+package com.smart.california.repository;
 
 import com.smart.california.domain.TourPackage;
 import org.springframework.data.repository.CrudRepository;

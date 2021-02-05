@@ -1,4 +1,4 @@
-package com.smart.california.repo;
+package com.smart.california.repository;
 
 import com.smart.california.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -6,7 +6,7 @@ package com.smart.california.domain;
 
 /**
  * Enumeration of the level of effort.
- *
+ * <p>
  * Created by Mary Ellen Bowman
  */
 public enum Difficulty {

@@ -4,11 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Security User Entity.
- *
+ * <p>
  * Created by Mary Ellen Bowman
  */
 @Entity
@@ -18,14 +19,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
-    public User(String username, String password, Role role, String firstName, String lastName) {
-        this.username = username;
-        this.password = password;
-        this.roles = Arrays.asList(role);
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
 
     @Column(name = "username")
     private String username;
@@ -40,21 +33,26 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+    )
+    private List<Role> roles;
+
     /**
      * Default Constructor.
      */
     protected User() {
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns
-            = @JoinColumn(name = "user_id",
-            referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id",
-                    referencedColumnName = "id"))
-
-
-    private List<Role> roles;
+    public User(String username, String password, Role role, String firstName, String lastName) {
+        this.username = username;
+        this.password = password;
+        this.roles = Collections.singletonList(role);
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public Long getId() {
         return id;

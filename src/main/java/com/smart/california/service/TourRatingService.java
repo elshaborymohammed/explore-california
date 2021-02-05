@@ -2,8 +2,8 @@ package com.smart.california.service;
 
 import com.smart.california.domain.Tour;
 import com.smart.california.domain.TourRating;
-import com.smart.california.repo.TourRatingRepository;
-import com.smart.california.repo.TourRepository;
+import com.smart.california.repository.TourRatingRepository;
+import com.smart.california.repository.TourRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -11,24 +11,27 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import java.util.ArrayList;
+import java.util.Collections;
 
 @SpringBootApplication
-//@EnableSwagger2
+@EnableSwagger2
 public class ExploreCaliforniaApplication {
-
-//    @Bean
-    public Docket docket() {
-        return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.basePackage("com.smart.california"))
-                .paths(PathSelectors.any()).build()
-                .apiInfo(new ApiInfo("Explore California API's",
-                        "API's for the Explore California Travel Service", "2.0", null,
-                        new Contact("LinkedIn Learning", "https://www.linkedin.com/learning", ""),
-                        null, null, new ArrayList()));
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(ExploreCaliforniaApplication.class, args);
+    }
+
+    @Bean
+    public Docket docket() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .enable(true)
+                .select()
+                .paths(PathSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.smart.california"))
+                .build();
+//                .apiInfo(new ApiInfo("Explore California API's",
+//                        "API's for the Explore California Travel Service", "2.0", null,
+//                        new Contact("LinkedIn Learning", "https://www.linkedin.com/learning", ""),
+//                        null, null, Collections.emptyList()));
     }
 }
